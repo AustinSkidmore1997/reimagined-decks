@@ -1,5 +1,5 @@
-export const getAllMatchups = () => {
-  return fetch('/api/matchup', {
+export const getAllUsers = () => {
+  return fetch('/api/user', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -7,18 +7,18 @@ export const getAllMatchups = () => {
   });
 };
 
-export const createMatchup = (matchupData) => {
-  return fetch('/api/matchup', {
+export const createUser = (userData) => {
+  return fetch('/api/user', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(matchupData),
+    body: JSON.stringify(userData),
   });
 };
 
-export const getMatchup = (matchupId) => {
-  return fetch(`/api/matchup/${matchupId}`, {
+export const getUser = (userId) => {
+  return fetch(`/api/user/${userId}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -26,18 +26,18 @@ export const getMatchup = (matchupId) => {
   });
 };
 
-export const createVote = (voteData) => {
-  return fetch(`/api/matchup/${voteData}`, {
+export const createDeck = (deckData) => {
+  return fetch(`/api/user/${deckData}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(voteData),
+    body: JSON.stringify(deckData),
   });
 };
 
-export const getAllTech = () => {
-  return fetch('/api/tech', {
+export const getAllDecks = () => {
+  return fetch('/api/deck', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

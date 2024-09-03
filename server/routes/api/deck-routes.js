@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getAllTech } = require('../../controllers/tech-controller');
+const { getAllTech } = require('../../controllers/deck-controller');
 
 router.route('/').get(getAllTech);
 

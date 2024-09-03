@@ -1,4 +1,4 @@
-const { Matchup } = require('../models');
+const { User } = require('../models');
 
 module.exports = {
   async createMatchup({ body }, res) {

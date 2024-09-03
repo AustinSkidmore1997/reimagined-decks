@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_MATCHUPS } from "../utils/queries";
 
-const Home = () => {
+const Profile = () => {
   const { loading, data } = useQuery(QUERY_MATCHUPS, {
     fetchPolicy: "no-cache",
   });
@@ -22,17 +22,7 @@ const Home = () => {
         {loading ? (
           <div>Loading...</div>
         ) : (
-          <ul className="square">
-            {matchupList.map((matchup) => {
-              return (
-                <li key={matchup._id}>
-                  <Link to={{ pathname: `/matchup/${matchup._id}` }}>
-                    {matchup.tech1} vs. {matchup.tech2}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <div></div>
         )}
       </div>
       <div className="card-footer text-center m-3">
@@ -45,4 +35,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Profile;

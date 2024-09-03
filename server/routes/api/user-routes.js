@@ -4,7 +4,7 @@ const {
   createMatchup,
   getMatchup,
   createVote,
-} = require('../../controllers/matchup-controller');
+} = require('../../controllers/user-controller');
 
 router.route('/').get(getAllMatchups);
 router.route('/').post(createMatchup);

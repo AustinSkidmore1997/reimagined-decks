@@ -4,7 +4,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_TECH } from "../utils/queries";
 import { CREATE_MATCHUP } from "../utils/mutations";
 
-const Matchup = () => {
+const Search = () => {
   const { loading, data } = useQuery(QUERY_TECH);
   const techList = data?.tech || [];
 
@@ -81,4 +81,4 @@ const Matchup = () => {
   );
 };
 
-export default Matchup;
+export default Search;
