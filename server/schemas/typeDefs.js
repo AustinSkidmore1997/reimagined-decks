@@ -1,25 +1,25 @@
 const typeDefs = /* GraphQL */`
-  type Tech {
+  type Deck {
     _id: ID!
     name: String!
+    cards: Array
   }
 
-  type Matchup {
+  type User {
     _id: ID!
-    tech1: String!
-    tech2: String!
-    tech1_votes: Int
-    tech2_votes: Int
+    username: String!
+    password: String!
+    decks: Array
   }
 
   type Query {
-    tech: [Tech]
-    matchups(_id: String): [Matchup]
+    deck: [Deck]
+    users(_id: String): [User]
   }
 
   type Mutation {
-    createMatchup(tech1: String!, tech2: String!): Matchup
-    createVote(_id: String!, techNum: Int!): Matchup
+    createUser(username: String!, password: String!): User
+    createDeck(_id: String!, name: String!): User
   }
 `;
 

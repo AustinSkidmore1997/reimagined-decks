@@ -1,44 +1,44 @@
 const { User } = require('../models');
 
 module.exports = {
-  async createMatchup({ body }, res) {
-    const matchup = await Matchup.create(body);
+  async createUser({ body }, res) {
+    const user = await User.create(body);
 
-    if (!matchup) {
-      return res.status(400).json({ message: 'Unable to create matchup' });
+    if (!user) {
+      return res.status(400).json({ message: 'Unable to create User' });
     }
 
-    res.status(200).json(matchup);
+    res.status(200).json(User);
   },
-  async createVote(req, res) {
-    const vote = await Matchup.findOneAndUpdate(
+  async createDeck(req, res) {
+    const deck = await User.findOneAndUpdate(
       { _id: req.body.id },
-      { $inc: { [`tech${req.body.techNum}_votes`]: 1 } },
+      { name: req.body.name },
       { new: true }
     );
 
-    if (!vote) {
-      return res.status(400).json({ message: 'Unable to vote on matchup' });
+    if (!deck) {
+      return res.status(400).json({ message: 'Unable to create Deck' });
     }
 
     res.status(200).json(vote);
   },
-  async getAllMatchups(req, res) {
-    const allMatchups = await Matchup.find({});
+  async getAllUsers(req, res) {
+    const allUsers = await User.find({});
 
-    if (!allMatchups) {
-      return res.status(400).json({ message: 'No matchups found' });
+    if (!allUsers) {
+      return res.status(400).json({ message: 'No Users found' });
     }
 
-    res.status(200).json(allMatchups);
+    res.status(200).json(allUsers);
   },
-  async getMatchup({ params }, res) {
-    const matchup = await Matchup.findOne({ _id: params.id });
+  async getUser({ params }, res) {
+    const user = await User.findOne({ _id: params.id });
 
-    if (!matchup) {
-      return res.status(400).json({ message: 'No matchup found by that id' });
+    if (!user) {
+      return res.status(400).json({ message: 'No User found by that id' });
     }
 
-    res.status(200).json(matchup);
+    res.status(200).json(user);
   },
 };

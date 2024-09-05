@@ -2,10 +2,10 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App.jsx';
-import Home from './pages/Home';
-import Matchup from './pages/Matchup';
-import Vote from './pages/Vote';
+import Profile from './pages/Profile';
+import Deck from './pages/Decks';
 import NotFound from './pages/NotFound';
+import Search from './pages/Search.jsx';
 
 const router = createBrowserRouter([
   {
@@ -15,13 +15,13 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Profile />
       }, {
-        path: '/matchup',
-        element: <Matchup />
+        path: '/decks',
+        element: <Deck />
       }, {
-        path: '/matchup/:id',
-        element: <Vote />
+        path: '/search',
+        element: <Search />
       },
     ],
   },

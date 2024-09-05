@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { getAllTech } = require('../../controllers/deck-controller');
+const { getDeck, getAllDecks } = require('../../controllers/deck-controller');
 
-router.route('/').get(getAllTech);
+router.route('/').get(getAllDecks);
 
 module.exports = router;
