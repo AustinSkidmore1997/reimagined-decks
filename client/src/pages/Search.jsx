@@ -1,82 +1,46 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
-import { QUERY_TECH } from "../utils/queries";
-import { CREATE_MATCHUP } from "../utils/mutations";
+import { QUERY_DECK } from "../utils/queries";
+import { CREATE_USER } from "../utils/mutations";
+import TCards from "../components/TCards";
 
 const Search = () => {
-  const { loading, data } = useQuery(QUERY_TECH);
-  const techList = data?.tech || [];
-
-  const [createMatchup, { error }] = useMutation(CREATE_MATCHUP);
-
-  const [formData, setFormData] = useState({
-    tech1: "JavaScript",
-    tech2: "JavaScript",
-  });
-  let navigate = useNavigate();
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      const { data } = await createMatchup({
-        variables: { ...formData },
-      });
-
-      navigate(`/matchup/${data.createMatchup._id}`);
-    } catch (err) {
-      console.error(err);
-    }
-
-    setFormData({
-      tech1: "JavaScript",
-      tech2: "JavaScript",
-    });
-  };
+  const [nameInput, setNameInput] = useState('');
+  let cards2 = []
 
   return (
-    <div className="card bg-white card-rounded w-25">
-      <div className="card-header bg-dark text-center">
-        <h1>Let's create a matchup!</h1>
+    <div className="card bg-grey card-rounded w-25">
+      <form onSubmit={async (e) => {
+        e.preventDefault();
+        const result = await fetch(`https://api.magicthegathering.io/v1/cards?name=${nameInput}`)
+        const data = await result.json();
+        console.log(data);
+        const cards = [...data.cards].sort((a, b) => {
+          if (a.name > b.name) {
+            return 1;
+          } else if (a.name < b.name) {
+            return -1;
+          } else {
+            return 0;
+          }
+
+        }).filter((item, pos, arr) => !pos || item.name != arr[pos - 1].name)
+
+
+        cards2 = cards;
+        console.log(cards2);
+      }}>
+        <input id="searchInput" placeholder="search for card name..." onChange={(e) => {
+          const { name, value } = e.target;
+          setNameInput(value);
+        }}>
+        </input>
+        <button type="submit">Submit</button>
+      </form>
+      <div>
+        {async (e) => await console.log(cards2)}
       </div>
-      <div className="card-body m-5">
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <form onSubmit={handleFormSubmit}>
-            <label>Tech 1: </label>
-            <select name="tech1" onChange={handleInputChange}>
-              {techList.map((tech) => {
-                return (
-                  <option key={tech._id} value={tech.name}>
-                    {tech.name}
-                  </option>
-                );
-              })}
-            </select>
-            <label>Tech 2: </label>
-            <select name="tech2" onChange={handleInputChange}>
-              {techList.map((tech) => {
-                return (
-                  <option key={tech._id} value={tech.name}>
-                    {tech.name}
-                  </option>
-                );
-              })}
-            </select>
-            <button className="btn btn-danger" type="submit">
-              Create Matchup!
-            </button>
-          </form>
-        )}
-      </div>
-      {error && <div>Something went wrong...</div>}
     </div>
   );
 };

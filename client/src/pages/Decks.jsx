@@ -8,18 +8,18 @@ import { QUERY_USER } from "../utils/queries";
 const Decks = () => {
   let { id } = useParams();
 
-  const { loading, data } = useQuery(QUERY_MATCHUPS, {
+  const { loading, data } = useQuery(QUERY_USER, {
     variables: { _id: id },
   });
 
   const matchup = data?.matchups || [];
 
-  const [createVote, { error }] = useMutation(CREATE_VOTE);
+  const [createDeck, { error }] = useMutation(CREATE_DECK);
 
-  const handleVote = async (techNum) => {
+  const handleDeck = async (deckName) => {
     try {
-      await createVote({
-        variables: { _id: id, techNum: techNum },
+      await createDeck({
+        variables: { _id: id, name: deckName },
       });
     } catch (err) {
       console.error(err);
@@ -29,13 +29,20 @@ const Decks = () => {
   return (
     <div className="card bg-white card-rounded w-50">
       <div className="card-header bg-dark text-center">
-        <h1>Here is the matchup!</h1>
+        <h1>Here is your deck!</h1>
       </div>
 
       {loading ? (
         <div>Loading ...</div>
       ) : (
-        <div></div>
+        <div>
+          <div>
+
+          </div>
+          <Link to="/search">
+            <button className="btn btn-lg btn-danger">Add Cards!</button>
+          </Link>
+        </div>
       )}
     </div>
   );

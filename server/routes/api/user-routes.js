@@ -1,14 +1,14 @@
 const router = require('express').Router();
 const {
-  getAllMatchups,
-  createMatchup,
-  getMatchup,
-  createVote,
+  getAllUsers,
+  createUser,
+  getUser,
+  createDeck,
 } = require('../../controllers/user-controller');
 
-router.route('/').get(getAllMatchups);
-router.route('/').post(createMatchup);
-router.route('/:id').get(getMatchup);
-router.route('/:id').put(createVote);
+router.route('/').get(getAllUsers);
+router.route('/').post(createUser);
+router.route('/:id').get(getUser);
+router.route('/:id').put(createDeck);
 
 module.exports = router;

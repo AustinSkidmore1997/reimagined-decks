@@ -2,19 +2,18 @@ import { Link } from "react-router-dom";
 
 // Uncomment import statements below after building queries and mutations
 import { useQuery } from "@apollo/client";
-import { QUERY_MATCHUPS } from "../utils/queries";
+import { QUERY_USER } from "../utils/queries";
 
 const Profile = () => {
-  const { loading, data } = useQuery(QUERY_MATCHUPS, {
+  const { loading, data } = useQuery(QUERY_USER, {
     fetchPolicy: "no-cache",
   });
 
-  const matchupList = data?.matchups || [];
 
   return (
     <div className="card bg-white card-rounded w-50">
       <div className="card-header bg-dark text-center">
-        <h1>Welcome to Tech Matchup!</h1>
+        <h1>Welcome !</h1>
       </div>
 
       <div className="card-body m-5">
@@ -26,9 +25,9 @@ const Profile = () => {
         )}
       </div>
       <div className="card-footer text-center m-3">
-        <h2>Ready to create a new matchup?</h2>
-        <Link to="/matchup">
-          <button className="btn btn-lg btn-danger">Create Matchup!</button>
+        <h2>Ready to create a new deck?</h2>
+        <Link to="/decks">
+          <button className="btn btn-lg btn-danger">Create Deck!</button>
         </Link>
       </div>
     </div>

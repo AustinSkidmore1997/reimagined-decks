@@ -1,19 +1,22 @@
 import { gql } from '@apollo/client';
 
 export const CREATE_USER = gql`
-  mutation createUser($tech1: String!, $tech2: String!) {
-    createUser(tech1: $tech1, tech2: $tech2) {
+  mutation createUser($username: String!, $password: String!) {
+    createUser(username: $username, password: $password) {
       _id
+      username
+      password
       
     }
   }
 `;
 
 export const CREATE_DECK = gql`
-  mutation createDeck($_id: String!, $techNum: Int!) {
-    createDeck(_id: $_id, techNum: $techNum) {
+  mutation createDeck($_id: String!, $name: String!, $cards: Array ) {
+    createDeck(_id: $_id, name: $name, cards: $cards) {
       _id
-     
+     name
+     cards
     }
   }
 `;

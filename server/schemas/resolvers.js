@@ -3,7 +3,7 @@ const { Deck, User } = require('../models')
 const resolvers = {
     Query: {
         decks: async () => {
-            return Deck.find({});
+            return Deck.find([]);
         },
         users: async (parent, { _id }) => {
             const params = _id ? { _id } : {}
@@ -11,17 +11,17 @@ const resolvers = {
         }
     },
     Mutation: {
-        createMatchup: async (parent, args) => {
+        createUser: async (parent, args) => {
             const user = await User.create(args);
             return user;
         },
-        createVote: async (parent, { _id, techNum }) => {
-            const vote = await Matchup.findOneAndUpdate(
+        createDeck: async (parent, { _id, name }) => {
+            const deck = await User.findOneAndUpdate(
                 { _id },
-                { $inc: { [`tech${techNum}_votes`]: 1 } },
+                { name },
                 { new: true }
             )
-            return vote;
+            return deck;
         }
     }
 }
