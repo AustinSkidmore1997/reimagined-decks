@@ -4,6 +4,8 @@ import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_DECK } from "../utils/queries";
 import { CREATE_USER } from "../utils/mutations";
 import TCards from "../components/TCards";
+import TheNavbar from "../components/NavBar";
+
 
 const Search = () => {
   const [nameInput, setNameInput] = useState('');
@@ -11,7 +13,9 @@ const Search = () => {
 
   return (
     <div>
-      <div>deck area</div>
+      <div>
+        <TheNavbar className="" style={{ width: '100%' }} />
+      </div>
       <div className="card bg-grey card-rounded w-25">
         <form onSubmit={async (e) => {
           e.preventDefault();

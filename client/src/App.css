@@ -20,3 +20,12 @@ li {
 li:hover {
   cursor: pointer;
 }
+
+nav {
+  display: inline;
+  width: 100%;
+}
+
+.links {
+  display: inline-block;
+}

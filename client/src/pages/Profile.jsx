@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 // Uncomment import statements below after building queries and mutations
 import { useQuery } from "@apollo/client";
 import { QUERY_USER } from "../utils/queries";
+import TheNavbar from "../components/NavBar";
 
 const Profile = () => {
   const { loading, data } = useQuery(QUERY_USER, {
@@ -12,6 +13,9 @@ const Profile = () => {
 
   return (
     <div className="card bg-white card-rounded w-50">
+      <div>
+        <TheNavbar />
+      </div>
       <div className="card-header bg-dark text-center">
         <h1>Welcome !</h1>
       </div>

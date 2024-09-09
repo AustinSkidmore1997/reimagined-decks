@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { CREATE_DECK } from "../utils/mutations";
 import { QUERY_USER } from "../utils/queries";
+import TheNavbar from "../components/NavBar";
 
 const Decks = () => {
   let { id } = useParams();
@@ -28,22 +29,23 @@ const Decks = () => {
 
   return (
     <div className="card bg-white card-rounded w-50">
+      <div>
+        <TheNavbar />
+      </div>
       <div className="card-header bg-dark text-center">
         <h1>Here is your decks!</h1>
       </div>
 
-      {loading ? (
-        <div>Loading ...</div>
-      ) : (
-        <div>
-          <div>
 
-          </div>
-          <Link to="/search">
-            <button className="btn btn-lg btn-danger">Add Cards!</button>
-          </Link>
+      <div>
+        <div>
+
         </div>
-      )}
+        <Link to="/search">
+          <button className="btn btn-lg btn-danger">Add Cards!</button>
+        </Link>
+      </div>
+
     </div>
   );
 };
