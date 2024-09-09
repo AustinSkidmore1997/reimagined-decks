@@ -17,7 +17,7 @@ const Profile = () => {
       </div>
 
       <div className="card-body m-5">
-        <h2>Here is a list of matchups you can vote on:</h2>
+        <h2>Here is a list of Decks:</h2>
         {loading ? (
           <div>Loading...</div>
         ) : (

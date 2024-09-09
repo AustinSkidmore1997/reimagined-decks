@@ -29,7 +29,7 @@ const Decks = () => {
   return (
     <div className="card bg-white card-rounded w-50">
       <div className="card-header bg-dark text-center">
-        <h1>Here is your deck!</h1>
+        <h1>Here is your decks!</h1>
       </div>
 
       {loading ? (
