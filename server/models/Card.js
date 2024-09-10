@@ -1,14 +1,14 @@
 const { Schema } = require('mongoose');
 
 const cardSchema = new Schema({
-    cardId: {
+    id: {
         type: String,
         required: true,
-        unique: true
+
     },
     name: {
         type: String,
-        unique: true
+
     },
     manaCost: {
         type: String,
@@ -23,6 +23,10 @@ const cardSchema = new Schema({
     text: {
         type: String,
         required: true
+    },
+    deckAmount: {
+        type: Number,
+        value: 0
     }
 
 }, { _id: false });

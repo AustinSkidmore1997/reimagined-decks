@@ -5,7 +5,7 @@ const deckSchema = new Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
+    
   },
   cards: [cardSchema]
 });
