@@ -21,11 +21,11 @@ const server = new ApolloServer({
 
 // Uncomment the following code once you have built the queries and mutations in the client folder
 const startApolloServer = async () => {
-   await server.start();
-  
+  await server.start();
+
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
-  
+
   // Uncomment the following code once you have built the queries and mutations in the client folder
   app.use('/graphql', expressMiddleware(server));
 
@@ -37,19 +37,19 @@ const startApolloServer = async () => {
     app.use(express.static(path.join(__dirname, '../client/dist')));
 
     // Uncomment this code once you have built out queries and mutations in the client folder
-     app.get('*', (req, res) => {
-       res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-     });
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    });
   } // closes if (process.env.NODE_ENV === 'production') condition
 
-// Uncomment this code once you have built out queries and mutations in the client folder
-   db.once('open', () => {
-     app.listen(PORT, () => {
-       console.log(`API server running on port ${PORT}!`);
-       console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
-     });
-   });
- };
+  // Uncomment this code once you have built out queries and mutations in the client folder
+  db.once('open', () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+    });
+  });
+};
 
 // Comment out this code once you have built out queries and mutations in the client folder
 //db.once('open', () => {

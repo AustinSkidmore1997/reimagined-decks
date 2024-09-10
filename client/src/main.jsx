@@ -6,6 +6,7 @@ import Profile from './pages/Profile';
 import Deck from './pages/Decks';
 import NotFound from './pages/NotFound';
 import Search from './pages/Search.jsx';
+import Landing from './pages/LandingPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Profile />
+        element: <Landing />
       }, {
         path: '/decks',
         element: <Deck />
