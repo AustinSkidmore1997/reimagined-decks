@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import { useState } from 'react';
+import LoginForm from "./LoginForm"
+import SignUpForm from "./SignupForm"
 import Auth from '../utils/auth';
 
 export default function TheNavbar() {
+
+    const [showModal, setShowModal] = useState(false);
 
     return (
         <>
@@ -70,5 +74,5 @@ export default function TheNavbar() {
       </Modal>
         </>
     );
-};
+}
 
