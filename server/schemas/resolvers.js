@@ -15,13 +15,15 @@ const resolvers = {
             const user = await User.create(args);
             return user;
         },
-        createDeck: async (parent, { _id, name }) => {
-            const deck = await User.findOneAndUpdate(
-                { _id },
-                { name },
+        createDeck: async (parent, { id, name }) => {
+            const newDeck = await Deck.create({ name });
+            console.log(newDeck);
+            const updatedUser = await User.findByIdAndUpdate(
+                id,
+                { $push: { decks: newDeck } },
                 { new: true }
             )
-            return deck;
+            return updatedUser;
         }
     }
 }

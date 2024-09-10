@@ -1,12 +1,8 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const Deck = require('./Deck');
 const userSchema = new Schema({
-    _id: {
-        type: String,
-        required: true,
 
-    },
     username: {
         type: String,
         required: true,
@@ -20,12 +16,7 @@ const userSchema = new Schema({
         required: true,
         minlength: 5,
     },
-    decks: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Deck',
-        },
-    ],
+    decks: [Deck.schema],
 });
 
 userSchema.pre('save', async function (next) {
