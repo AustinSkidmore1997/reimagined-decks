@@ -1,13 +1,17 @@
-const { Deck, User } = require('../models')
+const { Deck, User } = require('../models');
+const cardSchema = require('../models/Card');
 
 const resolvers = {
     Query: {
         decks: async () => {
-            return Deck.find([]);
+            return Deck.find();
         },
-        users: async (parent, { _id }) => {
+        user: async (parent, { _id }) => {
             const params = _id ? { _id } : {}
             return User.find(params)
+        },
+        users: async () => {
+            return User.find();
         }
     },
     Mutation: {
@@ -24,7 +28,29 @@ const resolvers = {
                 { new: true }
             )
             return updatedUser;
-        }
+        },
+//         addCard: async (parent, {id, addedCard}) => {
+//             const addOne = false;
+//             const deck = await Deck.findById( id );
+//             deck.cards.map(async (card) => {
+//             if (card.id !== addedCard.id){
+
+//            } else {
+//                addOne = true;
+//             } 
+//             const newCard = await cardSchema.create(addedCard);
+//             console.log(newCard);
+//             if (addOne = true) {
+//                 newCard.deckAmount.value = newCard.deckAmount.value + 1;
+//             }
+            
+//             const updatedDeck = await Deck.findByIdAndUpdate(
+//                 id,
+//                 { $push: { cards: newCard } },
+//                 { new: true }
+//             )
+//             return updatedDeck;
+//         })}
     }
 }
 
