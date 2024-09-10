@@ -13,7 +13,7 @@ const Decks = () => {
     variables: { _id: id },
   });
 
-  const matchup = data?.matchups || [];
+
 
   const [createDeck, { error }] = useMutation(CREATE_DECK);
 
