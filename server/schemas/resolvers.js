@@ -29,13 +29,13 @@ const resolvers = {
             )
             return updatedUser;
         },
-        addCard: async (parent, { id, addedCard }) => {
-            console.log(id, addedCard);
+        addCard: async (parent, { deckId, addedCard }) => {
+            const newCard = await Card.create(addedCard);
             const updatedDeck = await Deck.findOneAndUpdate(
-                { _id: id },
+                deckId,
                 {
 
-                    $push: { cards: addedCard.id }
+                    $push: { cards: ObjectId.Parse(newCard.id) }
                 },
                 {
                     new: true

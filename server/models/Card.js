@@ -1,6 +1,11 @@
 const { Schema, model } = require('mongoose');
 
 const cardSchema = new Schema({
+    _id: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        autoIncrement: true
+    },
     artist: {
         type: String,
         required: false
@@ -9,7 +14,7 @@ const cardSchema = new Schema({
         type: Number, 
         required: false },
     id: { 
-        type: Schema.Types.ObjectId, 
+        type: String, 
         required: true, 
         },
     imageUrl: { 
@@ -74,6 +79,10 @@ const cardSchema = new Schema({
         type: String, 
         required: false 
     }],
+    count: {
+        type: Number,
+        default: 0
+    }
 });
 
 // Create the model from the schema
