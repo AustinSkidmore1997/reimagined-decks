@@ -5,6 +5,7 @@ export const CREATE_USER = gql`
     createUser(username: $username, password: $password) {
       _id
       username
+      email
       password
       
     }
@@ -21,7 +22,7 @@ export const CREATE_DECK = gql`
   }
 `;
 export const ADD_CARD = gql`
-  mutation addCard($id: ID!, $addedCard: Card) {
+  mutation addCard($id: ID!, $addedCard: CardInput) {
     addCard(id: $id, addedCard: $addedCard){
       cardId
       name
