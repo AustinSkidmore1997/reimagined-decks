@@ -13,9 +13,7 @@ const Search = () => {
 
   return (
     <div>
-      <div>
-        <TheNavbar className="" style={{ width: '100%' }} />
-      </div>
+      
       <div className="card bg-grey card-rounded w-25">
         <form onSubmit={async (e) => {
           e.preventDefault();

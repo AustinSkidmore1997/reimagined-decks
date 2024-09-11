@@ -30,9 +30,7 @@ const Decks = () => {
 
   return (
     <div className="card bg-white card-rounded w-50">
-      <div>
-        <TheNavbar />
-      </div>
+      
       <div className="card-header bg-dark text-center">
         <h1>Here is your decks!</h1>
       </div>
@@ -42,9 +40,7 @@ const Decks = () => {
         <div>
           <Deck />
         </div>
-        <Link to="/search">
-          <button className="btn btn-lg btn-danger">Add Cards!</button>
-        </Link>
+       
       </div>
 
     </div>

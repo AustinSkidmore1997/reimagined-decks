@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const cardSchema = require('./Card');
+
 
 const deckSchema = new Schema({
   name: {
@@ -7,7 +7,10 @@ const deckSchema = new Schema({
     required: true,
     
   },
-  cards: [cardSchema]
+  cards: [{ 
+    type: Schema.Types.ObjectId, 
+    ref: 'Card' 
+  }]
 });
 
 const Deck = model('Deck', deckSchema);

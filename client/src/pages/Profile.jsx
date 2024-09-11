@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_USER } from "../utils/queries";
 import TheNavbar from "../components/NavBar";
+import Search from "./Search";
+import Decks from "./Decks";
 
 const Profile = () => {
   const { loading, data } = useQuery(QUERY_USER, {
@@ -19,21 +21,20 @@ const Profile = () => {
       <div className="card-header bg-dark text-center">
         <h1>Welcome !</h1>
       </div>
-
-      <div className="card-body m-5">
-        <h2>Here is a list of Decks:</h2>
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <div></div>
-        )}
-      </div>
-      <div className="card-footer text-center m-3">
-        <h2>Ready to create a new deck?</h2>
-        <Link to="/decks">
-          <button className="btn btn-lg btn-danger">Create Deck!</button>
-        </Link>
-      </div>
+        <div>
+          <div className="card-body m-5">
+            <h2>Here is a list of Decks:</h2>
+            {loading ? (
+              <div>Loading...</div>
+            ) : (
+              <Decks />
+            )}
+          </div>
+          
+        </div>
+        <div>
+          <Search />
+        </div>
     </div>
   );
 };
