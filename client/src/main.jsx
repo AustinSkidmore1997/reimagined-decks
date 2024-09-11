@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App.jsx';
 import Profile from './pages/Profile';
-import Deck from './pages/Decks';
+import Decks from './pages/Decks';
 import NotFound from './pages/NotFound';
 import Search from './pages/Search.jsx';
 import Landing from './pages/LandingPage.jsx';
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         element: <Landing />
       }, {
         path: '/decks',
-        element: <Deck />
+        element: <Decks />
       }, {
         path: '/search',
         element: <Search />

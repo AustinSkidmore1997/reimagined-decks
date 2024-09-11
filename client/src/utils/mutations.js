@@ -20,16 +20,16 @@ export const CREATE_DECK = gql`
     }
   }
 `;
-// export const ADD_CARD = gql`
-//   mutation addCard($id: ID!, $addedCard: Card) {
-//     addCard(id: $id, addedCard: $addedCard){
-//       cardId
-//       name
-//       manaCost
-//       imageUrl
-//       cmc
-//       text
-//       deckAmount
-//     }
-//   }
-// `;
+export const ADD_CARD = gql`
+  mutation addCard($id: ID!, $addedCard: Card) {
+    addCard(id: $id, addedCard: $addedCard){
+      cardId
+      name
+      manaCost
+      imageUrl
+      cmc
+      text
+      deckAmount
+    }
+  }
+`;
