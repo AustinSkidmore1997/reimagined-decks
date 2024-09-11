@@ -5,14 +5,24 @@ const typeDefs = /* GraphQL */`
     cards: [Card]
   }
 
-  type Card {
-    cardId: String
+  input CardInput {
+    id: String
     name: String
     manaCost: String
     imageUrl: String
     cmc: String
     text: String
-    deckAmount: String
+    deckAmount: Int
+  }
+
+  type Card {
+    id: String
+    name: String
+    manaCost: String
+    imageUrl: String
+    cmc: String
+    text: String
+    deckAmount: Int
   }
 
   type User {
@@ -32,7 +42,7 @@ const typeDefs = /* GraphQL */`
   type Mutation {
     createUser(username: String!, password: String!): User
     createDeck(id: ID!, name: String!): User
-    addCard(id: ID!, addedCard: String!): Deck
+    addCard(id: ID!, addedCard: CardInput!): Deck
   }
 `;
 

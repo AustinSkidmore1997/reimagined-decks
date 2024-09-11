@@ -5,6 +5,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { CREATE_DECK } from "../utils/mutations";
 import { QUERY_USER } from "../utils/queries";
 import TheNavbar from "../components/NavBar";
+import Deck from "../components/Deck";
 
 const Decks = () => {
   let { id } = useParams();
@@ -39,7 +40,7 @@ const Decks = () => {
 
       <div>
         <div>
-
+          <Deck />
         </div>
         <Link to="/search">
           <button className="btn btn-lg btn-danger">Add Cards!</button>

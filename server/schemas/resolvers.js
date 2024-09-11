@@ -29,29 +29,28 @@ const resolvers = {
             )
             return updatedUser;
         },
-//         addCard: async (parent, {id, addedCard}) => {
-//             const addOne = false;
-//             const deck = await Deck.findById( id );
-//             deck.cards.map(async (card) => {
-//             if (card.id !== addedCard.id){
+        addCard: async (parent, { id, addedCard }) => {
+            console.log(id, addedCard);
+            const updatedDeck = await Deck.findOneAndUpdate(
+                { _id: id },
+                {
 
-//            } else {
-//                addOne = true;
-//             } 
-//             const newCard = await cardSchema.create(addedCard);
-//             console.log(newCard);
-//             if (addOne = true) {
-//                 newCard.deckAmount.value = newCard.deckAmount.value + 1;
-//             }
-            
-//             const updatedDeck = await Deck.findByIdAndUpdate(
-//                 id,
-//                 { $push: { cards: newCard } },
-//                 { new: true }
-//             )
-//             return updatedDeck;
-//         })}
+                    $push: { cards: addedCard }
+                },
+                {
+                    new: true
+                }
+            )
+                .catch((err) => console.error(err));
+
+
+
+            return updatedDeck;
+        }
+
     }
 }
+
+
 
 module.exports = resolvers;

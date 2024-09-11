@@ -26,7 +26,7 @@ const cardSchema = new Schema({
     },
     deckAmount: {
         type: Number,
-        value: 0
+        default: 0
     }
 
 }, { _id: false });
