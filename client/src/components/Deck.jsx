@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createDeck } from "../utils/API";
+import { createDeck } from "../utils/api";
 
 export default function Deck(decks) {
     const [nameInput, setNameInput] = useState('');

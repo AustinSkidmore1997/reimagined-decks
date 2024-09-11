@@ -26,12 +26,7 @@ export default function TheNavbar() {
                                     <Nav.Link as={Link} to='/profile'>
                                         Profile
                                     </Nav.Link>
-                                    <Nav.Link as={Link} to='/decks'>
-                                        Decks
-                                    </Nav.Link>
-                                    <Nav.Link as={Link} to='/search'>
-                                        Search For Cards
-                                    </Nav.Link>
+                                    
                                     <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                                 </>
                             ) : (
