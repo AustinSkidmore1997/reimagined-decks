@@ -1,10 +1,11 @@
 import { gql } from '@apollo/client';
 
 export const CREATE_USER = gql`
-  mutation createUser($username: String!, $password: String!) {
-    createUser(username: $username, password: $password) {
+  mutation createUser($username: String!, $email: String!, $password: String! ) {
+    createUser(username: $username, email: $email, password: $password ) {
       _id
       username
+      email
       password
       
     }
@@ -21,15 +22,27 @@ export const CREATE_DECK = gql`
   }
 `;
 export const ADD_CARD = gql`
-  mutation addCard($id: ID!, $addedCard: Card) {
+  mutation addCard($id: ID!, $addedCard: CardInput) {
     addCard(id: $id, addedCard: $addedCard){
-      cardId
-      name
-      manaCost
+      artist
+      cmc 
+      id
       imageUrl
-      cmc
+      layout
+      legalities
+      manaCost
+      multiverseid
+      name
+      number
+      originalText
+      originalType
+      printings
+      rarity
+      set
+      setName 
       text
-      deckAmount
+      type
+      types
     }
   }
 `;

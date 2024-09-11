@@ -1,5 +1,5 @@
-const { Deck, User } = require('../models');
-const cardSchema = require('../models/Card');
+const { Card, Deck, User } = require('../models');
+
 
 const resolvers = {
     Query: {
@@ -8,7 +8,7 @@ const resolvers = {
         },
         user: async (parent, { _id }) => {
             const params = _id ? { _id } : {}
-            return User.find(params)
+            return User.findOne(params)
         },
         users: async () => {
             return User.find();
@@ -35,7 +35,7 @@ const resolvers = {
                 { _id: id },
                 {
 
-                    $push: { cards: addedCard }
+                    $push: { cards: addedCard.id }
                 },
                 {
                     new: true

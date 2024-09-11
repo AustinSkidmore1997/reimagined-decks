@@ -6,23 +6,47 @@ const typeDefs = /* GraphQL */`
   }
 
   input CardInput {
-    id: String
-    name: String
-    manaCost: String
+    artist: String
+    cmc: Int
+    id: ID!
     imageUrl: String
-    cmc: String
+    layout: String
+    legalities: [String]
+    manaCost: String
+    multiverseid: String
+    name: String
+    number: String
+    originalText: String
+    originalType: String
+    printings: [String]
+    rarity: String
+    set: String
+    setName: String
     text: String
-    deckAmount: Int
+    type: String
+    types: [String]
   }
 
   type Card {
-    id: String
-    name: String
-    manaCost: String
+    artist: String
+    cmc: Int
+    id: ID!
     imageUrl: String
-    cmc: String
+    layout: String
+    legalities: [String]
+    manaCost: String
+    multiverseid: String
+    name: String
+    number: String
+    originalText: String
+    originalType: String
+    printings: [String]
+    rarity: String
+    set: String
+    setName: String
     text: String
-    deckAmount: Int
+    type: String
+    types: [String]
   }
 
   type User {
@@ -40,7 +64,7 @@ const typeDefs = /* GraphQL */`
   }
 
   type Mutation {
-    createUser(username: String!, password: String!): User
+    createUser(username: String!, email:String!, password: String! ): User
     createDeck(id: ID!, name: String!): User
     addCard(id: ID!, addedCard: CardInput!): Deck
   }
