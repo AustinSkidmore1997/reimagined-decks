@@ -4,6 +4,7 @@ import { useState } from 'react';
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignupForm";
 import Auth from '../utils/auth';
+import '../index.css';
 
 export default function TheNavbar() {
     const [showModal, setShowModal] = useState(false);
