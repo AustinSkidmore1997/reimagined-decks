@@ -7,10 +7,15 @@ import TheNavbar from "../components/NavBar";
 import Search from "./Search";
 import Decks from "./Decks";
 
-const Profile = () => {
-  const { loading, data } = useQuery(QUERY_USER, {
-    fetchPolicy: "no-cache",
+const Profile = ({ userId }) => {
+  const { loading, error, data } = useQuery(QUERY_USER, {
+    variables: { _id: userId },
   });
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const { user } = data;
 
 
   return (

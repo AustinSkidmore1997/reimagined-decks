@@ -30,23 +30,24 @@ const resolvers = {
             return updatedUser;
         },
         addCard: async (parent, { deckId, addedCard }) => {
-            const newCard = await Card.create(addedCard);
-            const updatedDeck = await Deck.findOneAndUpdate(
-                deckId,
-                {
-
-                    $push: { cards: ObjectId.Parse(newCard.id) }
-                },
-                {
-                    new: true
-                }
-            )
-                .catch((err) => console.error(err));
-
-
-
-            return updatedDeck;
-        }
+            try {
+                // Create or update the card
+                const newCard = new Card(addedCard);
+                const savedCard = await newCard.save();
+                
+                // Add card to deck
+                const updatedDeck = await Deck.findByIdAndUpdate(
+                  deckId,
+                  { $push: { cards: savedCard._id } },
+                  { new: true }
+                ).populate('cards');
+        
+                return updatedDeck;
+              } catch (error) {
+                console.error('Error adding card to deck:', error);
+                throw new Error('Error adding card to deck');
+              }
+            }
 
     }
 }

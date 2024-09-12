@@ -1,44 +1,78 @@
-const { User } = require('../models');
+const { User, Deck } = require('../models');
 
 module.exports = {
-  async createUser({ body }, res) {
-    const user = await User.create(body);
+  // Create a new user
+  async createUser(req, res) {
+    try {
+      const user = await User.create(req.body);
 
-    if (!user) {
-      return res.status(400).json({ message: 'Unable to create User' });
+      if (!user) {
+        return res.status(400).json({ message: 'Unable to create User' });
+      }
+
+      res.status(201).json(user);
+    } catch (err) {
+      res.status(500).json({ message: 'An error occurred while creating the user', error: err });
     }
-
-    res.status(200).json(User);
   },
+
+  // Create a new deck and associate it with a user
   async createDeck(req, res) {
-    const deck = await User.findOneAndUpdate(
-      { _id: req.body.id },
-      { name: req.body.name },
-      { new: true }
-    );
+    try {
+      const { userId, name } = req.body;
 
-    if (!deck) {
-      return res.status(400).json({ message: 'Unable to create Deck' });
+      if (!userId || !name) {
+        return res.status(400).json({ message: 'User ID and deck name are required' });
+      }
+
+      // Create the new deck
+      const newDeck = new Deck({ name });
+      await newDeck.save();
+
+      // Update the user to include the new deck
+      const user = await User.findByIdAndUpdate(
+        userId,
+        { $push: { decks: newDeck._id } },
+        { new: true }
+      ).populate('decks');
+
+      if (!user) {
+        return res.status(400).json({ message: 'Unable to update User with new deck' });
+      }
+
+      res.status(201).json(user);
+    } catch (err) {
+      res.status(500).json({ message: 'An error occurred while creating the deck', error: err });
     }
-
-    res.status(200).json(vote);
   },
+
+  // Get all users
   async getAllUsers(req, res) {
-    const allUsers = await User.find({});
+    try {
+      const allUsers = await User.find({}).populate('decks');
 
-    if (!allUsers) {
-      return res.status(400).json({ message: 'No Users found' });
+      if (!allUsers || allUsers.length === 0) {
+        return res.status(404).json({ message: 'No Users found' });
+      }
+
+      res.status(200).json(allUsers);
+    } catch (err) {
+      res.status(500).json({ message: 'An error occurred while fetching users', error: err });
     }
-
-    res.status(200).json(allUsers);
   },
-  async getUser({ params }, res) {
-    const user = await User.findOne({ _id: params.id });
 
-    if (!user) {
-      return res.status(400).json({ message: 'No User found by that id' });
+  // Get a user by ID
+  async getUser(req, res) {
+    try {
+      const user = await User.findById(req.params.id).populate('decks');
+
+      if (!user) {
+        return res.status(404).json({ message: 'No User found with that ID' });
+      }
+
+      res.status(200).json(user);
+    } catch (err) {
+      res.status(500).json({ message: 'An error occurred while fetching the user', error: err });
     }
-
-    res.status(200).json(user);
   },
 };

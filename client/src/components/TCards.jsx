@@ -7,10 +7,10 @@ export default function TCards({ cards }) {
 
     const addACard = async (card) => {
         try {
-            // Assuming 'id' is the deck ID and 'card' contains all card details
+            
             const result = await addCard({
                 variables: { 
-                    id: '66e09a59dcfb643d3e27096a',  // Replace with actual deck ID if dynamic
+                    id: '66e09a59dcfb643d3e27096a',  
                     addedCard: {
                         artist: card.artist,
                         cmc: card.cmc,
@@ -29,18 +29,17 @@ export default function TCards({ cards }) {
                         setName: card.setName,
                         text: card.text,
                         type: card.type,
-                        types: card.types
+                        types: card.types,
+                        count: 1
                     }
                 }
             });
             
             if (data) {
                 console.log('Card added successfully:', data);
-                // Optionally, handle success (e.g., notify user or update state)
             }
         } catch (err) {
             console.error('Error adding card:', err);
-            // Optionally, handle error (e.g., notify user)
         }
     };
 

@@ -36,7 +36,7 @@ import TheNavbar from "../components/NavBar";
 
           
         
-        {loggedIn ? <div>Your email address is {email}</div> : <div />}
+        
 
         
       </div>

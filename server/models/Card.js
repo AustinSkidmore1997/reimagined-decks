@@ -1,11 +1,6 @@
 const { Schema, model } = require('mongoose');
 
 const cardSchema = new Schema({
-    _id: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        autoIncrement: true
-    },
     artist: {
         type: String,
         required: false
