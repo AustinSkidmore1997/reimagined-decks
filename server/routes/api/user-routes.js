@@ -6,9 +6,7 @@ const {
   createDeck,
 } = require('../../controllers/user-controller');
 
-router.route('/').get(getAllUsers);
-router.route('/').post(createUser);
-router.route('/:id').get(getUser);
-router.route('/:id').put(createDeck);
+router.route('/').get(getAllUsers).post(createUser);
+router.route('/:id').get(getUser).put(createDeck);
 
 module.exports = router;

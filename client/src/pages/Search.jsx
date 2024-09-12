@@ -1,10 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useMutation, useQuery } from "@apollo/client";
-import { QUERY_DECK } from "../utils/queries";
-import { CREATE_USER } from "../utils/mutations";
 import TCards from "../components/TCards";
-import TheNavbar from "../components/NavBar";
 
 
 const Search = () => {

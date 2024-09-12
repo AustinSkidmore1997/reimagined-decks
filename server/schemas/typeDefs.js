@@ -1,15 +1,14 @@
 const typeDefs = /* GraphQL */`
   type Deck {
-    _id: ID
+    _id: ID!
     name: String
     cards: [Card]
   }
 
   input CardInput {
-    _id: ID!
     artist: String
     cmc: Int
-    id: String!
+    id: ID!
     imageUrl: String
     layout: String
     legalities: [String]
@@ -26,14 +25,13 @@ const typeDefs = /* GraphQL */`
     text: String
     type: String
     types: [String]
-    count: Number!
+    count: Int!
   }
 
   type Card {
-    _id: ID!
     artist: String
     cmc: Int
-    id: String!
+    id: ID!
     imageUrl: String
     layout: String
     legalities: [String]
@@ -53,7 +51,7 @@ const typeDefs = /* GraphQL */`
   }
 
   type User {
-    _id: ID
+    _id: ID!
     username: String
     email: String!
     password: String
@@ -62,14 +60,14 @@ const typeDefs = /* GraphQL */`
 
   type Query {
     decks: [Deck]
-    user(_id: String): [User]
+    user(_id: ID!): User
     users: [User]
   }
 
   type Mutation {
     createUser(username: String!, email:String!, password: String! ): User
     createDeck(id: ID!, name: String!): User
-    addCard(id: ID!, addedCard: CardInput!): Card
+    addCard(id: ID!, card: CardInput!): Deck
   }
 `;
 
