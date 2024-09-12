@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_DECK } from '../utils/mutations';
 
 const Deck = ({ decks }) => {
     const [nameInput, setNameInput] = useState('');
     const [createDeck] = useMutation(CREATE_DECK);
-
+    // const []
     const handleCreateDeck = async (e) => {
         e.preventDefault();
         try {
             await createDeck({
-                variables: { _id: '', name: nameInput },
+                variables: { _id: '66e0983b67d9ff45e8cd6834', name: nameInput },
             });
             setNameInput('');
         } catch (err) {
