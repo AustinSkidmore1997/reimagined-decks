@@ -51,58 +51,69 @@ const SignupForm = () => {
 
   return (
     <>
-      {/* This is needed for the validation functionality above */}
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        {/* show alert if server response is bad */}
-        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-          Something went wrong with your signup!
-        </Alert>
+      <Form noValidate validated={validated} onSubmit={handleFormSubmit} className="space-y-4 p-6 bg-gray-700 rounded-lg shadow-md">
+            {showAlert && (
+                <Alert
+                    dismissible
+                    onClose={() => setShowAlert(false)}
+                    show={showAlert}
+                    variant='danger'
+                    className="bg-red-500 text-white border-red-600"
+                >
+                    Something went wrong with your signup!
+                </Alert>
+            )}
 
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor='username'>Username</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder='Your username'
-            name='username'
-            onChange={handleInputChange}
-            value={userFormData.username}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
-        </Form.Group>
+            <Form.Group className='mb-4'>
+                <Form.Label htmlFor='username' className="block text-gray-700 font-medium">Username</Form.Label>
+                <Form.Control
+                    type='text'
+                    placeholder='Your username'
+                    name='username'
+                    onChange={handleInputChange}
+                    value={userFormData.username}
+                    required
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+                <Form.Control.Feedback type='invalid' className="text-red-500 mt-1">Username is required!</Form.Control.Feedback>
+            </Form.Group>
 
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor='email'>Email</Form.Label>
-          <Form.Control
-            type='email'
-            placeholder='Your email address'
-            name='email'
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
-        </Form.Group>
+            <Form.Group className='mb-4'>
+                <Form.Label htmlFor='email' className="block text-gray-700 font-medium">Email</Form.Label>
+                <Form.Control
+                    type='email'
+                    placeholder='Your email address'
+                    name='email'
+                    onChange={handleInputChange}
+                    value={userFormData.email}
+                    required
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+                <Form.Control.Feedback type='invalid' className="text-red-500 mt-1">Email is required!</Form.Control.Feedback>
+            </Form.Group>
 
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor='password'>Password</Form.Label>
-          <Form.Control
-            type='password'
-            placeholder='Your password'
-            name='password'
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
-        </Form.Group>
-        <Button
-          disabled={!(userFormData.username && userFormData.email && userFormData.password)}
-          type='submit'
-          variant='success'>
-          Submit
-        </Button>
-      </Form>
+            <Form.Group className='mb-4'>
+                <Form.Label htmlFor='password' className="block text-gray-700 font-medium">Password</Form.Label>
+                <Form.Control
+                    type='password'
+                    placeholder='Your password'
+                    name='password'
+                    onChange={handleInputChange}
+                    value={userFormData.password}
+                    required
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+                <Form.Control.Feedback type='invalid' className="text-red-500 mt-1">Password is required!</Form.Control.Feedback>
+            </Form.Group>
+
+            <Button
+                disabled={!(userFormData.username && userFormData.email && userFormData.password)}
+                type='submit'
+                className='w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50'
+            >
+                Submit
+            </Button>
+        </Form>
     </>
   );
 };

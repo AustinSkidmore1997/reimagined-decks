@@ -17,29 +17,14 @@ import TheNavbar from "../components/NavBar";
 
 
     
-    <div className="Login-container">
+    <div className="Login-container ">
       <TheNavbar />
     <div className="mainContainer">
       <div className={'titleContainer'}>
         <div>Welcome!</div>
       </div>
       <div>To Our Deck building website.</div>
-      <div className={'buttonContainer'}>
-        <Link
-          className={'inputButton'}
-          type="button"
-          value={loggedIn ? 'Log out' : 'Log in'}
-
-         
-          
-          />
-
-          
-        
-        
-
-        
-      </div>
+      
     </div>
          
         
