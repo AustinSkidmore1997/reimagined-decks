@@ -1,7 +1,7 @@
 const typeDefs = /* GraphQL */`
   type Deck {
     _id: ID!
-    name: String
+    name: String!
     cards: [Card]
   }
 
@@ -66,7 +66,7 @@ const typeDefs = /* GraphQL */`
 
   type Mutation {
     createUser(username: String!, email:String!, password: String! ): User
-    createDeck(id: ID!, name: String!): User
+    createDeck(id: ID!, name: String! ): User
     addCard(id: ID!, card: CardInput!): Deck
   }
 `;

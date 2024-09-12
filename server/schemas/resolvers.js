@@ -22,12 +22,12 @@ const resolvers = {
         createDeck: async (parent, { id, name }) => {
             const newDeck = await Deck.create({ name });
             console.log(newDeck);
-            const updatedUser = await User.findByIdAndUpdate(
-                id,
-                { $push: { decks: newDeck } },
-                { new: true }
-            )
-            return updatedUser;
+            // const updatedUser = await User.findByIdAndUpdate(
+            //     id,
+            //     { $push: { decks: newDeck } },
+            //     { new: true }
+            // )
+            // return updatedUser;
         },
         addCard: async (parent, { deckId, addedCard }) => {
             try {
