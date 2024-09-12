@@ -14,17 +14,13 @@ export const CREATE_USER = gql`
 
 // Mutation to create a deck
 export const CREATE_DECK = gql`
-  mutation createDeck($userId: ID!, $name: String!) {
-    createDeck(id: $userId, name: $name) {
+  mutation createDeck($Id: ID!, $name: String!) {
+    createDeck(id: $Id, name: $name) {
       _id
       name
-      cards {
-        _id
-        name
-        
       }
     }
-  }
+  
 `;
 
 // Mutation to add a card to a deck

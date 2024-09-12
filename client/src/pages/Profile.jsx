@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
 
-// Uncomment import statements below after building queries and mutations
 import { useQuery } from "@apollo/client";
 import { QUERY_USER } from "../utils/queries";
 import TheNavbar from "../components/NavBar";
@@ -12,10 +10,7 @@ const Profile = ({ userId }) => {
     variables: { _id: userId },
   });
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-
-  const { user } = data;
+  
 
 
   return (

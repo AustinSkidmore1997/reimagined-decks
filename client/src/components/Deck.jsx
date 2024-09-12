@@ -8,9 +8,11 @@ const Deck = ({ decks }) => {
     // const []
     const handleCreateDeck = async (e) => {
         e.preventDefault();
+        console.log('print1');
         try {
+            console.log(nameInput);
             await createDeck({
-                variables: { _id: '66e0983b67d9ff45e8cd6834', name: nameInput },
+                variables: { _id: '', name: nameInput },
             });
             setNameInput('');
         } catch (err) {
